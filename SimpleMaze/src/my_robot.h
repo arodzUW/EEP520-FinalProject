@@ -9,9 +9,6 @@ namespace{
     using namespace enviro;
     using namespace std;
 
-    int globalVarR = 0;
-    int globarVarL = 0;
-
     class Forward : public State, public AgentInterface {
         public:
         void entry(const Event& e) {}

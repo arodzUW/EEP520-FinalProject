@@ -4,7 +4,7 @@ EE P 520: Final Project
 Software Engineering For Embedded Applications
 ---
 
-This repository contains the full implementation of the final project developed for the EEP520 course, Software Engineering for Embedded Applications. The contents of this repository are: (1) the SimpleMaze project which, using ELMA and ENVIRO creates a robot that navigates through a maze, and (2) XXX which also makes use of ELMA and ENVIRO and XXX. Please note that each of the folders on this repository hold individual README files that further expand on the project implementation, use, and development. 
+This repository contains the full implementation of the final project developed for the EEP520 course, Software Engineering for Embedded Applications. The contents of this repository are: (1) the SimpleMaze project which, using ELMA and ENVIRO creates a robot that navigates through a maze, and (2) XXX which also makes use of ELMA and ENVIRO and XXX. Please note that each of the folders on this repository hold individual `README.md` files that further expand on the project implementation, use, and development. 
 
 Installation
 ---
