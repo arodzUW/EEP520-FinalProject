@@ -1,0 +1,25 @@
+{
+    "name": "timeRobot",
+    "type": "dynamic",
+    "description": "Time counter robot",
+    "shape": [
+        { "x": -5, "y": 20 },
+        { "x": 5, "y": 20 },
+        { "x": 5, "y": -20 },
+        { "x": -5, "y": -20 }
+    ],
+    "friction": {
+      "collision": 5,
+      "linear": 40,
+      "rotational": 600
+    },
+    "sensors": [
+      {
+        "type": "range",
+        "location": { "x": 5, "y": 0 },
+        "direction": 0
+     }
+    ],
+    "mass": 1,    
+    "controller": "lib/time_robot.so"
+}
