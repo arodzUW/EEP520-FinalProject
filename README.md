@@ -16,7 +16,7 @@ As stated, both projects make use of ELMA and ENVIRO packages. Both repositories
 
 Once this full repository has been downloaded, make sure to have [Docker](https://www.docker.com) installed in your computer. Both elma and enviro have been preloaded to a Docker image which makes calling these packages easier. More information can be found in ELMA and ENVIRO's repository. Once Docker is installed simply do: <br />
 ```bash
-docker run -p80:80 -p8765:8765 -v $PWD:/source - it klavins/enviro:v1.3 bash
+docker run -p80:80 -p8765:8765 -v $PWD:/source -it klavins/enviro:v1.3 bash
 ```
 *Please note that at the time these projects were created, ENVIRO's latest version was v1.3. Please refer to ENVIRO's repository for more information on the latest version and updates. Should you face compiling issues, ensure you are using a compatible ENVIRO version.
 
