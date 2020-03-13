@@ -1,0 +1,45 @@
+{
+    "name": "monitorRobot",
+    "type": "dynamic",
+    "description": "Police robot that will send you back to jail should you get caught.",
+    "shape": [
+        { "x": -10, "y": 10 },
+        { "x": 10, "y": 10 },
+        { "x": 10, "y": -10 },
+        { "x": -10, "y": -10 }
+    ],
+    "friction": {
+      "collision": 5,
+      "linear": 40,
+      "rotational": 600
+    },
+    "sensors": [
+      {
+        "type": "range",
+        "location": { "x": 8, "y": 0 },
+        "direction": 0
+      },
+      {
+        "type": "range",
+        "location": { "x": 8, "y": 8 },
+        "direction": 1.57
+      },
+      {
+        "type": "range",
+        "location": { "x": 8, "y": -8 },
+        "direction": -1.57
+      },
+      {
+        "type": "range",
+        "location": { "x": 8, "y": 8 },
+        "direction": 0.68
+      },
+      {
+        "type": "range",
+        "location": { "x": 8, "y": -8 },
+        "direction": -0.68
+      }
+    ],
+    "mass": 1,    
+    "controller": "lib/monitor_robot.so"
+}

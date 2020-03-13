@@ -24,7 +24,52 @@
                 "y": 270, 
                 "theta": -1.57
             }
-        }     
+        },
+        {
+            "definition": "defs/monitor_robot.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": -364, 
+                "y": -270, 
+                "theta": 1.57
+            }
+        },
+        {
+            "definition": "defs/monitor_robot.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 370, 
+                "y": -270, 
+                "theta": 3.14
+            }
+        },
+        {
+            "definition": "defs/monitor_robot.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": 270, 
+                "theta": 3.14
+            }
+        },
+        {
+            "definition": "defs/monitor_robot.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 364, 
+                "y": 270, 
+                "theta": -1.57
+            }
+        },
+        {
+            "definition": "defs/monitor_robot.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": -50, 
+                "theta": 3.14
+            }
+        }          
     ],
 
     "statics": [

@@ -11,15 +11,21 @@ class playerAgentController : public Process, public AgentInterface {
     playerAgentController() : Process(), AgentInterface() {}
 
     void init() {
+        // If the time_robot reached the end, it'll display that you
+        // did not make it
+        watch("lockdown", [this](Event e) {
+            label("Didn't Make It!", 0, 0);
+            //teleport(-364, 270, -1.57);
+        });
         watch("keyup", [&](Event &e) {
             auto pk = e.value()["key"].get<std::string>();
-            if (pk == "w") {
+            if (pk == "i") {
                 xf = 0;
                 yf = -f;
-            } else if (pk == "m") {
+            } else if (pk == "k") {
                 xf = 0;
                 yf = f;
-            } else if (pk == "a") {
+            } else if (pk == "j") {
                 xf = -f;
                 yf = 0;
             } else if (pk == "l") {

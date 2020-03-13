@@ -9,12 +9,14 @@ namespace {
     using namespace enviro;
     using namespace std;
 
+    // This class makes the robot move forward. Same functionality as
+    // Forward class in monitor_robot.
     class moveF : public State, public AgentInterface {
         public:
         void entry(const Event& e) {}
         void during() {
             track_velocity(5,0);
-            if (sensor_value(0) < 5) {
+            if (sensor_value(0) < 3) {
                 emit(Event(tin));
             }
         }
@@ -23,16 +25,23 @@ namespace {
         string tin;
     };
 
+    // Once the robot reaches the end of the hall, you want it to stop moving.
+    // This class stops the robot and lets the player-agent, through an Event,
+    // that the prison is in lockdown. 
     class Stopped : public State, public AgentInterface {
         public:
         void entry(const Event& e) {}
         void during() {
+            emit(Event("lockdown"));
             track_velocity(0,0);
-            cout << "If you haven't finished: You LOST!!!" << endl;
+            label(s, -5, 5);
         }
         void exit(const Event& e) {}
+        std::string s = "Prison in Lockdown!!";
     };
 
+    // The timeRobotController class simply defines the states and transitions of
+    // the state machine
     class timeRobotController : public StateMachine, public AgentInterface {
         public:
         timeRobotController() : StateMachine () {
