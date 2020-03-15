@@ -2,8 +2,11 @@
 #define __PLAYER_AGENT_AGENT__H 
 
 #include "enviro.h"
+#include <vector>
+#include <iostream>
 
 using namespace enviro;
+using namespace std;
 
 class playerAgentController : public Process, public AgentInterface {
 
@@ -21,8 +24,16 @@ class playerAgentController : public Process, public AgentInterface {
         // If the time_robot (Commisioner) reached the end, it'll
         // display that you did not make it.
         watch("lockdown", [this](Event e) {
-            label("Didn't Make It!", 0, 0);
-            teleport(-364, 270, -1.57);
+            cpVect vect = position();
+            double x = vect.x;
+            double y = vect.y;
+            if (x > 330 && y > 260) {
+                label("I escaped!!!", 15, 0);
+                teleport(360, 320, 1.57);
+            } else {
+                label("Didn't make it!", 0, 0);
+                teleport(-364, 270, -1.57);
+            }
         });
         watch("keyup", [&](Event &e) {
             auto pk = e.value()["key"].get<std::string>();

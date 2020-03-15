@@ -34,7 +34,7 @@ Once these steps have been completed, your terminal should be running under "roo
 Usage
 ---
 
-In this video game you will attempt to escape prison! You (the round object) are a prisioner on the run. It is your job to make it to the end of the maze before the Commisioner (red-suqared automated robot), who has found that you escaped, puts the prison on lockdown and you'll spent a lifetime sentence. Beware, however, the prison is full of monitoring, yet crooked, guards (blue-squared automated robots). They can tolerate seeing you running around, but they won't tolerate you touching them. Touch them, and you're back in jail where you started! Think you got what it takes? Beat the Commisioner, beat the guards... Oh!... and don't let yourself get caught by the cameras (brown-triangles in map)! Touch a camera, and the non-crooked guard who's vigilant will bring you back to where you started. Could you make it, or will you stay in jail forever? <br />
+In this video game you will attempt to escape prison! You (the round object) are a prisioner on the run. It is your job to make it to the end of the maze before the Commisioner (red-suqared automated robot), who has found that you escaped, puts the prison on lockdown and you'll spent a lifetime sentence. Beware, however, the prison is full of monitoring, yet crooked, guards (blue-squared automated robots). They can tolerate seeing you running around, but they won't tolerate you touching them. Touch them, and you're back in jail where you started! Think you got what it takes? Beat the Commisioner, beat the guards... Oh!... and don't let yourself get caught by the cameras (brown-triangles in map)! Touch a camera, and the non-crooked guard who's vigilant will bring you back to where you started. Once completed you complete the maze (if you do), wait for the commisioner to put the prison on lockdown. This alerts all guards to focus on the inside leaving you the chance to escape.  Could you make it, or will you stay in jail forever? <br />
 
 To run the game / simulation: in the terminal, within the `EEP520-FinalProject` directory run: <br />
 ```bash
@@ -49,7 +49,7 @@ At this point you should see in the `localhost` webpage the simulation running a
 
 To manually control the prisoner (circled robot) use keys `I` for moving up, `K` for down, `J` for left, and `L` for right. The simulation can be stopped at any time by using `ctrl + c` in the terminal. If need to re-run the simulation, simply run `enviro` in the terminal. 
 
-The red automated robot is the counter. Once the robot reaches the end of the hall, if you have not yet reached your destination, you lose. 
+The red automated robot is the counter. Once the robot reaches the end of the hall, if you have not yet reached your destination, you lose and a message stating that you didn't make it will appear on top of your robot. If you make it to the end, and wait until the Commisioner reaches the end, a message stating that you escaped will appear over your robot. Happy games! 
 
 Project Functionality
 ===

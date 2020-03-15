@@ -34,7 +34,7 @@ namespace {
         void during() {
             emit(Event("lockdown"));
             track_velocity(0,0);
-            label(s, -5, 5);
+            label(s, -20, -20);
         }
         void exit(const Event& e) {}
         std::string s = "Prison in Lockdown!!";
