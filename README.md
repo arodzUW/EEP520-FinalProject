@@ -4,12 +4,14 @@ MazEscape - EE P 520: Final Project
 Software Engineering For Embedded Applications
 ---
 
-This repository contains the full implementation of the final project developed for the EEP520 course; Software Engineering for Embedded Applications offered at the University of Washington. The project hereby presented and developed implements a user-controlled agent, or robot, which navigates through a maze. At the same time, there is another automated agent that "counts down" by moving towards a goal along with another automated "monitoring-robot" which is the user's goal to avoid touching. Overall, during the simulation, it is the user's goal to reach the end of the maze before the "count-down" robot reaches the goal and without touching the auto-monitoring robots. Further information on the game is discussed in the 'Usage' section. The auto-controlled robots move in a single axis while the user-controlled robot moves in an 'omni-directional' way. The implementation of this project was possible due to the use of ELMA and ENVIRO packages which are further explained in the installation section of this `README.md` file. 
+This repository contains the full implementation of the final project developed for the EEP520 course; Software Engineering for Embedded Applications offered at the University of Washington. The project implements a user-controlled agent that navigates through a maze while other automatic agents move through the maze counting you down and monitoring the maze halls. It is the player's duty to move through the maze without before the time runs out! Please refer to the `Usage` section for more in-depth explanation on what the simulation does and the video game instructions. The user controlled robots moves omni-directional while the automated robots, some move unidirectional and other don't move at all. The implementation of this project was possible due to the use of `ELMA` and `ENVIRO` packages which are further explained in the installation section of this `README.md` file. 
 
 Installation - MacOS
 ---
 
-First make sure you have `git` installed in your computer (write `git` on the terminal and run it). If not installed, installing Xcode command line tools should install git. Then create a directory for this repository and make it your working directory. Clone this repository into your computer directory by running:
+Please note that the instructions that follow were put together after following the process in a Mac computer. Windows computer follow similar steps but some might slightly differ; the overall process, however, remains the same for both systems. <br />
+
+First make sure you have `git` installed in your computer (write `git` on a terminal window and run it). If not installed, installing Xcode command line tools should install git. Then create a directory for this repository in your computer and make it your working directory. Clone this repository into your computer directory by running:
 ```bash
 git clone https://github.com/arodzUW/EEP520-FinalProject.git
 cd EEP520-FinalProject
@@ -21,18 +23,20 @@ As stated, this project makes use of `ELMA` and `ENVIRO` packages. Both reposito
 - [ELMA](https://github.com/klavinslab/elma)<br />
 - [ENVIRO](https://github.com/klavinslab/enviro) <br />
 
-This next set of instructions is on how to set up your developing environment with ENVIRO/ELMA built-in without having to clone these two packages. For this, make sure to have [Docker](https://www.docker.com) installed in your computer. Both `ELMA` and `ENVIRO` have been preloaded to a Docker image /container which makes calling these packages easier. Once Docker is installed in your computer, simply do: <br />
+This next set of instructions is on how to set up your developing environment with ENVIRO/ELMA built-in without having to clone the two packages that make ENVIRO and ELMA. For this, make sure to have [Docker](https://www.docker.com) installed in your computer. Both `ELMA` and `ENVIRO` have been preloaded to a Docker image / container which makes calling these packages easier. Once Docker is installed in your computer, go to the directory where the project has been copied and simply do on the terminal window: <br />
 ```bash
-docker run -p80:80 -p8765:8765 -v $PWD:/source -it klavins/enviro:v1.3 bash
+docker run -p80:80 -p8765:8765 -v $PWD:/source -it klavins/enviro:v1.4 bash
 ```
-*Please note that at the time these projects were created, ENVIRO's latest version was v1.3. Please refer to ENVIRO's repository for more information on the latest version and updates. Should you face compiling issues, ensure you are using a compatible ENVIRO version. <br />
+*Please note that at the time these projects were created ENVIRO's version 1.4 was used and that, since then, other versions might have been uploaded since then. Please refer to ENVIRO's repository for more information on the latest version and updates. Should you face compiling issues, ensure you are using a compatible ENVIRO version. <br />
 
 Once these steps have been completed, your terminal should be running under "root@...", which means you're working from within the container. You are now ready to run this project.
 
 Usage
 ---
 
-To run the simulation in the terminal, within the `EEP520-FinalProject` directory run: <br />
+In this video game you will attempt to escape prison! You (the round object) are a prisioner on the run. It is your job to make it to the end of the maze before the Commisioner (red-suqared automated robot), who has found that you escaped, puts the prison on lockdown and you'll spent a lifetime sentence. Beware, however, the prison is full of monitoring, yet crooked, guards (blue-squared automated robots). They can tolerate seeing you running around, but they won't tolerate you touching them. Touch them, and you're back in jail where you started! Think you got what it takes? Beat the Commisioner, beat the guards... Oh!... and don't let yourself get caught by the cameras (brown-triangles in map)! Touch a camera, and the non-crooked guard who's vigilant will bring you back to where you started. Could you make it, or will you stay in jail forever? <br />
+
+To run the game / simulation: in the terminal, within the `EEP520-FinalProject` directory run: <br />
 ```bash
 cd MazEscape
 esm start
@@ -41,16 +45,19 @@ For an in-depth explanation of what does `esm start` does, refer to ENVIRO's doc
 ```bash
 enviro
 ```
-At this point you should see in the `localhost` webpage the simulation running and the automated robots moving around. Once in the simulation, you are attempting to escape the prison. The Commissioner has found your cell empty and is on it's way to put the entire prison cell in lockdown (red automated robot). It is your job to reach the end of the maze without being caught by the police officers making their rounds. If you let a police officer touch you, you'd automatically go back to jail. If you let the Commissioner reach the end of the hall, you lose. What's it gonna be?
+At this point you should see in the `localhost` webpage the simulation running and the automated robots moving around. Once in the simulation, you are attempting to escape the prison and the Commisioner has already started making his way to the lockdown button.
 
-To manually control the prisoner (circled robot) use keys `W` for moving up, `M` for down, `A` for left, and `L` for right. The simulation can be stopped at any time by using `ctrl + c`. If need to re-run the simulation, simply run `enviro` in the terminal. 
+To manually control the prisoner (circled robot) use keys `I` for moving up, `K` for down, `J` for left, and `L` for right. The simulation can be stopped at any time by using `ctrl + c` in the terminal. If need to re-run the simulation, simply run `enviro` in the terminal. 
 
 The red automated robot is the counter. Once the robot reaches the end of the hall, if you have not yet reached your destination, you lose. 
 
-Functionality
+Project Functionality
+===
+
+Prisioner
 ---
 
-The code has been properly commented throughout the `.h` files with in-code explanation of what bits of the code are doing. All automated robots are controlled in a similar fashion. The manually-controlled Robot functionality is mainly being handled by one class: `PlayerAgentController`.  Below a visual peek at the contents of the class: <br /> 
+The player agent is you, the prisioner, the user controlled robot. The `player_agent.h` file controls the functonality of the robot. Simply, the robot has one major class defining its behavior once the simulation has started: "playerAgentController". PlayerAgentController class defines what the robot should do when pressing the keys on the keyboard and at what force / directio should the robot move when the keys are pressed. For more details, please refer to the in-code comments left in the `.h` file. Below the playerAgentController's class. <br /> 
 
 ```c++
 class playerAgentController : public Process, public AgentInterface {
@@ -93,9 +100,109 @@ class playerAgentController : public Process, public AgentInterface {
 
 };
 ```
-By using this class and `PlayerAgent` class, the manual control of the robot is made possible. <br />
+Note that the objects in the map (robots and walls) are defined in the `config.json`, `player_agent.json`, `camera_robot.json`, `time_robot.json`, and `monitor_robot.json` files.
 
-Note that the objects in the map (robots and walls) are defined in the `config.json`, `player_agent.json`, and `time_robot.json` files.
+The Commisioner
+---
+
+The Commisioner is the red automated robot that moves toward the end of the hall at the left in the simulation. The code name for the Commissioner is "time_robot" and all its functionality is controlled by the `time_robot.h` file. Two main classes control what the Commisioner does, moveF and Stopped. 'moveF' class controls the speed of the forward movement of the robot and 'Stoppped' controls what to do once the end of the hall is reached. For more details, please refer to the in-code comments left in the `.h` file. Below a representation of both classes.
+
+```c++
+class moveF : public State, public AgentInterface {
+        public:
+        void entry(const Event& e) {}
+        void during() {
+            track_velocity(1,0);
+            if (sensor_value(0) < 3) {
+                emit(Event(tin));
+            }
+        }
+        void exit(const Event& e) {}
+        void set_tin_name(std::string s) {tin = s;}
+        string tin;
+    };
+
+    class Stopped : public State, public AgentInterface {
+        public:
+        void entry(const Event& e) {}
+        void during() {
+            emit(Event("lockdown"));
+            track_velocity(0,0);
+            label(s, -5, 5);
+        }
+        void exit(const Event& e) {}
+        std::string s = "Prison in Lockdown!!";
+    };
+```
+
+The Guards
+---
+
+The guards are the scattered blue automated robots navigating through the map. The code name for the guards is "monitor_robot" and all of their functionality is controlled by the `monitor_robot.h` class. Two main classes control what the guards do: Forward and Angular. Forward controls the forward motion of the robot and Angular the rotating motion of the robot. For more details, please refer to the in-code comments left in the `.h` file. Below a representation of both classes.
+
+```c++
+class Forward : public State, public AgentInterface {
+        public:
+        void entry(const Event& e) {
+            notice_collisions_with("playerAgent", [&](Event &e) {
+                emit(Event("caught"));
+            });
+        }
+        void during() { 
+            track_velocity(5,0);
+            if ( sensor_value(0) < 30 || sensor_value(1) < 8 || sensor_value(2) < 8 || 
+            sensor_value(3) < 8 || sensor_value(4) < 8) {
+                emit(Event(tin));
+            }            
+        }
+        void exit(const Event& e) {}
+        void tin_ring(std::string s) { tin = s; }
+        std::string tin;
+    };
+
+    class Angular : public State, public AgentInterface {
+        public:
+        void entry(const Event& e) { 
+            randAngSpeed = rand() % 2 == 0 ? 2 : -2; 
+        }
+        void during() {
+            track_velocity(0, randAngSpeed);
+            if ( sensor_value(0) > 60 ) {
+                emit(Event(tin));
+            }
+        }
+        void exit(const Event& e) {}
+        double randAngSpeed;
+        void tin_ring(std::string s) { tin = s; }
+        std::string tin;        
+    };
+```
+
+The Cameras
+---
+
+The cameras are programmed differently than all the other robots given that these are static "robots" and don't need to move through the map. Using the default classes auto-generated when ENVIRO's `esm generate` function is called, the ability to detect when another objects interact with it its possible. All the functions for the camera were built in in the class: __. For more details, please refer to the in-code comments left in the `.h` file. Below a representation of the class.
+
+```c++
+class cameraRobotController : public Process, public AgentInterface {
+
+    public:
+    cameraRobotController() : Process(), AgentInterface() {}
+
+    void init() {
+        notice_collisions_with("playerAgent", [&](Event &e) {
+            emit(Event("caught"));
+        });
+    }
+    void start() {}
+    void update() {}
+    void stop() {}
+
+};
+```
+
+Project Information
+===
 
 Visuals
 ---

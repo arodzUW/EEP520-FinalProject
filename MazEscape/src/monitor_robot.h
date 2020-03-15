@@ -14,7 +14,16 @@ namespace {
     // move in the forward direction.
     class Forward : public State, public AgentInterface {
         public:
-        void entry(const Event& e) {}
+        void entry(const Event& e) {
+            // Similar to the camera, guards will detect if the player Agent
+            // collides with them. This will emit an event that the player Agent
+            // can watch for and respond to. 
+            notice_collisions_with("playerAgent", [&](Event &e) {
+                emit(Event("caught"));
+            });
+        }
+        // In during() all its implemented is the forward motion and what to do when
+        // the robot is about to hit a wall which is detected by the sensors.
         void during() { 
             track_velocity(5,0);
             if ( sensor_value(0) < 30 || sensor_value(1) < 8 || sensor_value(2) < 8 || 
@@ -28,7 +37,8 @@ namespace {
     };
 
     // Angular class defines the angular (rotating) speed and makes the
-    // robot turn right or left in a randomized way. 
+    // robot turn right or left in a randomized way. There is no forward
+    // movement when this class is in-place.
     class Angular : public State, public AgentInterface {
         public:
         void entry(const Event& e) { 

@@ -15,7 +15,7 @@ namespace {
         public:
         void entry(const Event& e) {}
         void during() {
-            track_velocity(5,0);
+            track_velocity(3,0);
             if (sensor_value(0) < 3) {
                 emit(Event(tin));
             }

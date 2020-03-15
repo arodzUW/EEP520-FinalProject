@@ -11,11 +11,18 @@ class playerAgentController : public Process, public AgentInterface {
     playerAgentController() : Process(), AgentInterface() {}
 
     void init() {
-        // If the time_robot reached the end, it'll display that you
-        // did not make it
+        // This watch is looking for collisions that took place
+        // between the agent and the guards or the cameras. If the
+        // event "caught" is heard, the player returns to the 
+        // starting point.
+        watch("caught", [this](Event e) {
+            teleport(-364, 270, -1.57);
+        });
+        // If the time_robot (Commisioner) reached the end, it'll
+        // display that you did not make it.
         watch("lockdown", [this](Event e) {
             label("Didn't Make It!", 0, 0);
-            //teleport(-364, 270, -1.57);
+            teleport(-364, 270, -1.57);
         });
         watch("keyup", [&](Event &e) {
             auto pk = e.value()["key"].get<std::string>();
