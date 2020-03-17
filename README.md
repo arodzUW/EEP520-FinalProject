@@ -201,7 +201,7 @@ class cameraRobotController : public Process, public AgentInterface {
 };
 ```
 
-Project Information
+General Information
 ===
 
 Visuals
@@ -218,3 +218,22 @@ License
 ---
 
 All contents of this repository are open source and uses the MIT license. Refer to the `LICENSE` file for more information.
+
+Project Supplementary Information
+===
+
+Key Development Challenges
+---
+
+During the development of this project I faced several challenges that did took me some time to figure out. In full disclosure, and as a Chemical Engineer by education, this course was my first course ever on programming and C / C++. What is a challenge for me might not have been a challenge at all for a more experienced programmer. Please see below for a list of the major challenges faced: <br />
+
+- Monitor robots wandering: Before having the final code as it is, I attemped to have more sensors and logic behind the control of the monitoring robots. The re-occuring problem I had was the the robots would continually get stuck around the edges or once hit a dead end, they would not turn 180 degrees to return, but simply stop moving. The problem was addressed by randomizing the left / right turns. Original logic implemented by turning the robot based on the available space left or right, did not worked. <br />
+
+- Collision detection: It took me some time to figure out how to emit and watch for an event between different classes. I knew that part of the functionality I wanted the game to have was that if the user touches the cameras in the game or the guards, it would instantaneously return to the initial position. Being able to send that message between different classes, was not easy to solve (for me).
+
+- Developing the maze: Although hw8 was cancelled, for it I had developed a maze with a bot that would autonomously navigate through it. Figuring out the coordinates and shape of the maze along with the program behind having a bot autonomously navigate through it was definitely a challenge.
+
+Sources Used
+---
+
+The project was fully developed using as a baseline the pre-loaded `ENVIRO` examples along with the documentation for functionalities implementation. Other minor sources from Google searches were referenced to search for more basing functionalities and C++ documentation. 
