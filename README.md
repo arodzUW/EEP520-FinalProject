@@ -57,7 +57,7 @@ Project Functionality
 Prisioner
 ---
 
-The player agent is you, the prisioner, the user controlled robot. The `player_agent.h` file controls the functonality of the robot. Simply, the robot has one major class defining its behavior once the simulation has started: "playerAgentController". PlayerAgentController class defines what the robot should do when pressing the keys on the keyboard and at what force / directio should the robot move when the keys are pressed. For more details, please refer to the in-code comments left in the `.h` file. Below the playerAgentController's class. <br /> 
+The player agent is you, the prisioner, the user controlled robot. The `player_agent.h` file controls the functonality of the robot. Simply, the robot has one major class defining its behavior once the simulation has started: "playerAgentController". PlayerAgentController class defines what the robot should do when pressing the keys on the keyboard and at what force / direction should the robot move when the keys are pressed. The class also 'watches' for events being sent from other classes and responds to them as appropriate. For more details, please refer to the in-code comments left in the `.h` file. Below the playerAgentController's class. <br /> 
 
 ```c++
 class playerAgentController : public Process, public AgentInterface {
@@ -66,15 +66,30 @@ class playerAgentController : public Process, public AgentInterface {
     playerAgentController() : Process(), AgentInterface() {}
 
     void init() {
+        watch("caught", [this](Event e) {
+            teleport(-364, 270, -1.57);
+        });
+        watch("lockdown", [this](Event e) {
+            cpVect vect = position();
+            double x = vect.x;
+            double y = vect.y;
+            if (x > 330 && y > 260) {
+                label("I escaped!!!", 15, 0);
+                teleport(360, 320, 1.57);
+            } else {
+                label("Didn't make it!", 0, 0);
+                teleport(-364, 270, -1.57);
+            }
+        });
         watch("keyup", [&](Event &e) {
             auto pk = e.value()["key"].get<std::string>();
-            if (pk == "w") {
+            if (pk == "i") {
                 xf = 0;
                 yf = -f;
-            } else if (pk == "m") {
+            } else if (pk == "k") {
                 xf = 0;
                 yf = f;
-            } else if (pk == "a") {
+            } else if (pk == "j") {
                 xf = -f;
                 yf = 0;
             } else if (pk == "l") {
